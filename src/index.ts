@@ -7,14 +7,14 @@ app.use(cors());
 
 app.post("/ocr", async (req: Request, res: Response) => {
   try {
-    const { imageBase64, language = "por" } = req.body;
+    const { imageBase64 } = req.body;
     if (!imageBase64) {
-      return res.status(400).json({ error: "imageBase64 missing" });
+      return res.status(400).json({ error: "Nenhuma imagem presente!" });
     }
 
     const params = new URLSearchParams();
-    params.append("base64Image", imageBase64); // precisa incluir "data:image/jpeg;base64,..."
-    params.append("language", language);
+    params.append("base64Image", imageBase64);
+    params.append("language", "por");
     params.append("isOverlayRequired", "false");
     params.append("OCREngine", "2");
 
@@ -45,6 +45,4 @@ app.post("/ocr", async (req: Request, res: Response) => {
   }
 });
 
-app.listen(3099, () => {
-  console.log(`🚀 Server running on http://localhost:${3099}`);
-});
+app.listen(3099, null);
