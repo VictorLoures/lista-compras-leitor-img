@@ -21,7 +21,7 @@ app.post("/ocr", async (req: Request, res: Response) => {
     const ocrRes = await fetch("https://api.ocr.space/parse/image", {
       method: "POST",
       headers: {
-        apikey: "K83691706388957",
+        apikey: "",
         "Content-Type": "application/x-www-form-urlencoded",
       },
       body: params.toString(),
